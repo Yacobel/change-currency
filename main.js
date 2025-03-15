@@ -63,6 +63,19 @@ fetch(
         .toLocaleUpperCase()}/flat/64.png`;
       calc();
     };
+    change.onclick = function () {
+      originale = img.src;
+      originalename = select[0].value;
+      originalevalue = result1.value;
+      img.src = img2.src;
+      img2.src = originale;
+      select[0].value = select[1].value;
+      select[1].value = originalename;
+      console.log(select[0].value);
+      result1.value = parseFloat(result2.value);
+      result2.value = result1.value;
+      calc();
+    };
   });
 result1.addEventListener("input", () => {
   calc();
