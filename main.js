@@ -9,14 +9,12 @@ let text = document.querySelector(".footer .rh ");
 let change = document.getElementById("change");
 let manine = document.getElementById("manine");
 let manine2 = document.getElementById("manine2");
-
 function calc() {
   fetch(
     `https://currency-api.pages.dev/v1/currencies/${select[0].value.toLowerCase()}.json`
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       text.textContent = `1 ${select[0].value}  = ${
         data[select[0].value.toLowerCase()][select[1].value.toLowerCase()]
       }`;
@@ -24,10 +22,7 @@ function calc() {
         parseFloat(result1.value) *
         data[select[0].value.toLowerCase()][select[1].value.toLowerCase()]
       ).toFixed(2);
-      console.log(
-        parseFloat(result1.value) *
-          data[select[0].value.toLowerCase()][select[1].value.toLowerCase()]
-      );
+      
     });
 }
 fetch(
@@ -64,16 +59,18 @@ fetch(
       calc();
     };
     change.onclick = function () {
-      originale = img.src;
-      originalename = select[0].value;
-      originalevalue = result1.value;
+      let originale = img.src;
+      let originalename = select[0].value;
+      let originalevalue = result1.value;
+      let orname=name1.textContent
       img.src = img2.src;
       img2.src = originale;
       select[0].value = select[1].value;
       select[1].value = originalename;
-      console.log(select[0].value);
-      result1.value = parseFloat(result2.value);
-      result2.value = result1.value;
+      result1.value = result2.value;
+      result2.value = originalevalue;
+      name1.textContent=name2.textContent
+      name2.textContent=orname
       calc();
     };
   });
