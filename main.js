@@ -15,14 +15,15 @@ function calc() {
   )
     .then((res) => res.json())
     .then((data) => {
-      text.textContent = `1 ${select[0].value}  = ${
-        data[select[0].value.toLowerCase()][select[1].value.toLowerCase()]
-      }`;
+      text.textContent = `1 ${select[0].value}  = ${data[
+        select[0].value.toLowerCase()
+      ][select[1].value.toLowerCase()].toFixed(8)}`;
+      
+
       result2.value = (
         parseFloat(result1.value) *
         data[select[0].value.toLowerCase()][select[1].value.toLowerCase()]
       ).toFixed(2);
-      
     });
 }
 fetch(
@@ -62,15 +63,15 @@ fetch(
       let originale = img.src;
       let originalename = select[0].value;
       let originalevalue = result1.value;
-      let orname=name1.textContent
+      let orname = name1.textContent;
       img.src = img2.src;
       img2.src = originale;
       select[0].value = select[1].value;
       select[1].value = originalename;
       result1.value = result2.value;
       result2.value = originalevalue;
-      name1.textContent=name2.textContent
-      name2.textContent=orname
+      name1.textContent = name2.textContent;
+      name2.textContent = orname;
       calc();
     };
   });
